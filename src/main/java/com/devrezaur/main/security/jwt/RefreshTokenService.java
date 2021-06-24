@@ -1,7 +1,6 @@
 package com.devrezaur.main.security.jwt;
 
 import java.time.Instant;
-import java.util.Optional;
 import java.util.UUID;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class RefreshTokenService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public Optional<RefreshToken> findByRefreshToken(String token) {
+	public RefreshToken findByRefreshToken(String token) {
 		return refreshTokenRepository.findByRefreshToken(token);
 	}
 
@@ -36,10 +35,10 @@ public class RefreshTokenService {
 		return refreshToken;
 	}
 
-	public RefreshToken verifyExpiration(RefreshToken token) throws Exception {
+	public RefreshToken verifyExpiration(RefreshToken token) {
 		if (token.getExpDate().compareTo(Instant.now()) < 0) {
 			refreshTokenRepository.delete(token);
-			throw new Exception("Refresh token expired");
+			return null;
 		}
 
 		return token;

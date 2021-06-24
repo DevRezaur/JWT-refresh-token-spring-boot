@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class RefreshToken {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "token_id")
 	private long id;
 
