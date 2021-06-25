@@ -66,18 +66,6 @@ public class AuthController {
 		return ResponseEntity.ok().body(regUser);
 	}
 	
-	@PostMapping("/registerAdmin")
-	public ResponseEntity<?> registerAdmin(@RequestBody User user) {
-		User regUser = userService.findUserByUsername(user.getUsername());
-		
-		if(regUser != null)
-			return ResponseEntity.badRequest().body("User already exists!");
-		
-		regUser = userService.saveAdmin(user);
-		
-		return ResponseEntity.ok().body(regUser);
-	}
-	
 	@PostMapping("/logout")
 	public ResponseEntity<?> logoutUser(@RequestBody Map<String, Long> userid) {
 		refreshTokenService.deleteByUserId(userid.get("id"));    
