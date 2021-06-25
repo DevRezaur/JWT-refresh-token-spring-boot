@@ -56,13 +56,15 @@ This is a ready to use template code for implementing `JWT based authentication`
 
 ### User Registration API
 
-`POST` URI: `localhost:8080/admin/registerUser`
+`POST` URI: `localhost:8080/user/registerUser`
 
 <br />
 
 ![user-registration](https://github.com/DevRezaur/JWT-refresh-token-spring-boot/blob/main/screenshots/user-registration.PNG)
 
 ### Admin Registration API
+
+Since admin registration is a `admin privileged` feature, we protected it via `/admin/` mapping. So sending authentication header is required with this request.
 
 `POST` URI: `localhost:8080/admin/registerAdmin`
 
@@ -222,6 +224,12 @@ VALUES('102', 2);
 * `Clone the repository`
 * `Update maven build (Project > Maven > Update Project)`
 * `Run (Project > Run As > Spring Boot App)`
+
+<br />
+
+## Relevant Projects
+
+> [JWT Auth with Spring Boot (No Refresh Token)](https://github.com/DevRezaur/spring-security-JWT-module)
 
 <br />
 
